@@ -8,5 +8,5 @@ COPY package.json package.json
 
 RUN npm install
 
-EXPOSE ${PORT}
+EXPOSE ${PORT}/tcp
 CMD npm start
