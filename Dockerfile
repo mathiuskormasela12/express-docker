@@ -2,6 +2,8 @@ FROM node:18-alpine
 ENV PORT=9000
 LABEL author = Mathius
 
+WORKDIR /user/app
+
 RUN mkdir src
 COPY src/*.js src
 COPY package.json package.json
