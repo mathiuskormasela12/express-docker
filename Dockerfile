@@ -1,6 +1,7 @@
 FROM node:18-alpine
-ENV PORT=9000
 LABEL author = Mathius
+ARG PORT=2004
+ENV PORT=${PORT}
 
 WORKDIR /user/app
 
