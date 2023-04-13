@@ -13,7 +13,5 @@ RUN npm install
 VOLUME /app/data
 
 EXPOSE ${PORT}/tcp
-
-HEALTHCHECK --interval=5s --start-period=5s --retries=3 --timeout=5s CMD curl -f http://localhost:${PORT}/api/health
-
-CMD npm start
+ENTRYPOINT ["node"]
+CMD ["src/index.js"]
