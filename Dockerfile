@@ -8,5 +8,7 @@ COPY package.json package.json
 
 RUN npm install
 
+VOLUME /app/data
+
 EXPOSE ${PORT}/tcp
 CMD npm start
