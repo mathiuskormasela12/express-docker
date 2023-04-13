@@ -1,14 +1,8 @@
 FROM node:18-alpine
 LABEL author = Mathius
-ARG PORT=2004
-ENV PORT=${PORT}
+ENV PORT=3000
 
 WORKDIR /user/app
-
-RUN addgroup -S kormaselaGroup
-RUN adduser -S -D -h /user/app mathiusUser kormaselaGroup
-RUN chown -R mathiusUser:kormaselaGroup /user/app
-USER mathiusUser:kormaselaGroup
 
 RUN mkdir src
 COPY src/*.js src
@@ -19,4 +13,7 @@ RUN npm install
 VOLUME /app/data
 
 EXPOSE ${PORT}/tcp
+
+HEALTHCHECK --interval=5s --start-period=5s --retries=3 --timeout=5s CMD curl -f http://localhost:${PORT}/api/health
+
 CMD npm start
